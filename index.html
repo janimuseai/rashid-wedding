@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Rashid — Wedding Invitation</title>
+<meta name="description" content="Wedding invitation of Muhammad Rashid — Baraat 1 January 2027, Walima 3 January 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Amiri:wght@400;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FBF5E9; --cream:#F5EBD7; --maroon:#6E1423; --maroon-deep:#47090F;
+  --gold:#C9A227; --gold-soft:#E4C566; --ink:#3A2A20; --muted:#8A7460;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font-family:'Jost',sans-serif;overflow-x:hidden}
+::selection{background:var(--gold);color:#fff}
+
+/* ---------- opening doors ---------- */
+#gate{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 35%,#8A1E30 0%,var(--maroon-deep) 70%);cursor:pointer;transition:opacity .9s ease .55s}
+#gate .door{position:absolute;top:0;bottom:0;width:50.5%;background:
+  repeating-linear-gradient(90deg,rgba(0,0,0,.13) 0 3px,transparent 3px 46px),
+  linear-gradient(180deg,#7E1B2C,#5A0F1D);transition:transform 1.4s cubic-bezier(.7,0,.3,1);z-index:1}
+#gate .door.l{left:0;border-right:3px solid var(--gold)}
+#gate .door.r{right:0;border-left:3px solid var(--gold)}
+#gate.open .door.l{transform:translateX(-102%)}
+#gate.open .door.r{transform:translateX(102%)}
+#gate.open{opacity:0;pointer-events:none}
+#gate .gate-inner{position:relative;z-index:2;text-align:center;color:var(--cream);padding:24px}
+#gate .arch{width:150px;margin:0 auto 10px;display:block}
+#gate h2{font-family:'Great Vibes',cursive;font-weight:400;font-size:2.6rem;color:var(--gold-soft);line-height:1.15}
+#gate p{letter-spacing:.35em;font-size:.72rem;text-transform:uppercase;margin-top:14px;color:#EAD9B0}
+#gate .tap{margin-top:26px;display:inline-block;border:1px solid var(--gold);color:var(--gold-soft);padding:11px 30px;border-radius:999px;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.35)}50%{box-shadow:0 0 0 12px rgba(201,162,39,0)}}
+
+/* ---------- petals ---------- */
+.petal{position:fixed;top:-4vh;z-index:5;pointer-events:none;color:#D9A441;opacity:.55;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(300deg)}}
+
+/* ---------- layout ---------- */
+.wrap{max-width:560px;margin:0 auto;padding:0 22px}
+section{padding:64px 0 8px;text-align:center}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+.bismillah{font-family:'Amiri',serif;font-size:1.9rem;color:var(--maroon);margin-bottom:6px}
+.orn{display:flex;align-items:center;gap:12px;justify-content:center;margin:16px auto}
+.orn::before,.orn::after{content:"";height:1px;width:74px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.orn span{color:var(--gold);font-size:.85rem}
+.small-caps{letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;color:var(--muted)}
+h1.names{font-family:'Great Vibes',cursive;font-weight:400;font-size:3.4rem;line-height:1.25;color:var(--maroon);margin:10px 0 2px}
+h1.names .amp{display:block;font-size:2rem;color:var(--gold);margin:2px 0}
+.parent-line{font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:1.02rem}
+.hero-date{margin-top:20px;font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);letter-spacing:.08em}
+.hero-date b{color:var(--maroon)}
+.hero-arch{width:min(330px,84vw);margin:26px auto 4px;display:block}
+.frame{border:1px solid var(--gold-soft);outline:1px solid rgba(201,162,39,.35);outline-offset:6px;border-radius:170px 170px 14px 14px;padding:30px 18px 24px;background:linear-gradient(180deg,#FFFDF6,var(--cream))}
+
+/* countdown */
+.count{display:flex;gap:10px;justify-content:center;margin-top:22px}
+.count .cell{background:var(--maroon);color:var(--cream);border-radius:12px;min-width:68px;padding:12px 4px 9px;box-shadow:0 8px 20px rgba(110,20,35,.25)}
+.count .num{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--gold-soft);line-height:1}
+.count .lbl{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;margin-top:5px}
+
+/* events */
+h2.title{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--maroon);font-weight:700}
+.event{margin:22px auto;background:#FFFDF6;border:1px solid var(--gold-soft);border-radius:16px;padding:28px 22px 24px;box-shadow:0 12px 28px rgba(110,20,35,.08);position:relative;overflow:hidden}
+.event::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold))}
+.event .ev-name{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--maroon);line-height:1.1}
+.event .ev-urdu{font-family:'Amiri',serif;color:var(--gold);font-size:1.25rem;margin-top:2px}
+.event .ev-date{font-family:'Playfair Display',serif;font-size:1.12rem;margin-top:10px;color:var(--ink)}
+.event .ev-day{color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;margin-top:3px}
+.event .ev-meta{margin-top:12px;color:var(--muted);font-size:.95rem;line-height:1.55}
+.event .ev-meta b{color:var(--ink);font-weight:500}
+.btns{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.25s}
+.btn.gold{background:linear-gradient(135deg,var(--gold),#A9861D);color:#fff;box-shadow:0 8px 18px rgba(201,162,39,.35)}
+.btn.ghost{border:1px solid var(--gold);color:var(--maroon)}
+.btn:hover{transform:translateY(-2px)}
+
+/* dua + footer */
+.dua{font-family:'Amiri',serif;font-size:1.45rem;line-height:2.1;color:var(--maroon);padding:0 6px}
+footer{text-align:center;padding:54px 22px 40px;margin-top:56px;background:linear-gradient(180deg,var(--ivory),var(--cream));border-top:1px solid var(--gold-soft)}
+footer .mono{font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--maroon)}
+footer p{color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.6}
+.credit{margin-top:20px;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:#B49B78}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:40;background:#25D366;color:#fff;border-radius:999px;padding:13px 20px;font-size:.82rem;letter-spacing:.06em;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+@media(max-width:420px){h1.names{font-size:2.8rem}.count .cell{min-width:60px}}
+</style>
+</head>
+<body>
+
+<!-- ======== OPENING GATE ======== -->
+<div id="gate" onclick="openGate()">
+  <div class="door l"></div><div class="door r"></div>
+  <div class="gate-inner">
+    <svg class="arch" viewBox="0 0 200 240" fill="none" stroke="#E4C566" stroke-width="3">
+      <path d="M20 230 V110 C20 60 60 50 100 18 C140 50 180 60 180 110 V230"/>
+      <path d="M42 230 V118 C42 78 72 66 100 40 C128 66 158 78 158 118 V230" stroke-width="1.6" opacity=".7"/>
+      <circle cx="100" cy="128" r="16" stroke-width="1.6"/>
+      <path d="M100 112 v32 M84 128 h32" stroke-width="1.4" opacity=".8"/>
+    </svg>
+    <p>The wedding of</p>
+    <h2>Muhammad Rashid</h2>
+    <span class="tap">Tap to open</span>
+  </div>
+</div>
+
+<!-- ======== HERO ======== -->
+<section class="wrap" style="padding-top:44px">
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <p class="small-caps">With the blessings of Allah</p>
+  <div class="orn"><span>✦</span></div>
+
+  <div class="frame reveal">
+    <svg class="hero-arch" viewBox="0 0 340 300" fill="none">
+      <path d="M30 290 V140 C30 78 84 62 170 14 C256 62 310 78 310 140 V290" stroke="#C9A227" stroke-width="3"/>
+      <path d="M52 290 V148 C52 94 98 76 170 34 C242 76 288 94 288 148 V290" stroke="#C9A227" stroke-width="1.4" opacity=".65"/>
+      <!-- floral dots -->
+      <g fill="#C9A227"><circle cx="30" cy="150" r="4"/><circle cx="310" cy="150" r="4"/><circle cx="170" cy="16" r="4"/><circle cx="52" cy="160" r="3"/><circle cx="288" cy="160" r="3"/></g>
+      <!-- couple vector -->
+      <g stroke="#6E1423" stroke-width="3.4" stroke-linecap="round">
+        <circle cx="138" cy="128" r="15"/>
+        <path d="M138 143 v52 M138 158 l-20 16 M138 158 l20 16 M138 195 l-16 62 M138 195 l16 62"/>
+        <circle cx="204" cy="128" r="15"/>
+        <path d="M204 143 c-14 26 -18 60 -20 96 h40 c-2 -36 -6 -70 -20 -96"/>
+        <path d="M188 116 c6 -14 26 -14 32 0" />
+      </g>
+      <path d="M150 108 c6 -10 20 -10 22 2 c1 8 -8 12 -11 16 c-3 -4 -12 -8 -11 -16z" fill="#C9A227"/>
+      <g fill="#6E1423" opacity=".55"><circle cx="86" cy="238" r="3.4"/><circle cx="254" cy="238" r="3.4"/><circle cx="104" cy="256" r="2.6"/><circle cx="236" cy="256" r="2.6"/></g>
+      <path d="M60 290 h220" stroke="#C9A227" stroke-width="2"/>
+    </svg>
+    <p class="small-caps">We're getting married</p>
+    <h1 class="names">Muhammad Rashid<span class="amp">&amp;</span>Daughter of Maqbool Ahmad</h1>
+    <p class="hero-date"><span data-event="baraat">Baraat — <b>Friday, 1 January 2027</b><br></span><span data-event="walima">Walima — <b>Sunday, 3 January 2027</b></span><span data-event="mehndi" style="display:none">Mehndi — <b>Tareekh jald announce hogi</b></span></p>
+  </div>
+
+  <div class="reveal">
+    <p class="small-caps" style="margin-top:34px">Counting the moments</p>
+    <div class="count" id="count">
+      <div class="cell"><div class="num" id="cd-d">–</div><div class="lbl">Days</div></div>
+      <div class="cell"><div class="num" id="cd-h">–</div><div class="lbl">Hours</div></div>
+      <div class="cell"><div class="num" id="cd-m">–</div><div class="lbl">Mins</div></div>
+      <div class="cell"><div class="num" id="cd-s">–</div><div class="lbl">Secs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== EVENTS ======== -->
+<section class="wrap">
+  <div class="orn reveal"><span>✦</span></div>
+  <h2 class="title reveal">Wedding Events</h2>
+  <p class="parent-line reveal">Aap ki tashreef awari hamare liye aizaz hogi</p>
+
+  <div class="event reveal" data-event="mehndi">
+    <div class="ev-name">Mehndi</div>
+    <div class="ev-urdu">مہندی</div>
+    <div class="ev-date">Tareekh ka elaan jald hoga</div>
+    <div class="ev-day">In Sha Allah</div>
+    <p class="ev-meta">Venue aur time ki tafseel jald yahin update kar di jayegi.</p>
+  </div>
+
+  <div class="event reveal" data-event="baraat">
+    <div class="ev-name">Baraat</div>
+    <div class="ev-urdu">بارات</div>
+    <div class="ev-date">1 January 2027</div>
+    <div class="ev-day">Friday — Jummah</div>
+    <p class="ev-meta"><b>Time:</b> jald update hoga<br><b>Venue:</b> Sector 9/B, Saeedabad, Baldia Town, Karachi</p>
+    <div class="btns">
+      <a class="btn gold" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Baraat%20—%20Muhammad%20Rashid%20Wedding&dates=20270101T140000Z/20270101T180000Z">Add to Calendar</a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sector+9-B+Saeedabad+Baldia+Town+Karachi">View Location</a>
+    </div>
+  </div>
+
+  <div class="event reveal" data-event="walima">
+    <div class="ev-name">Walima</div>
+    <div class="ev-urdu">ولیمہ</div>
+    <div class="ev-date">3 January 2027</div>
+    <div class="ev-day">Sunday — Itwaar</div>
+    <p class="ev-meta"><b>Time:</b> jald update hoga<br><b>Venue:</b> VIP Baldia Lawn "C", Baldia Town, Karachi</p>
+    <div class="btns">
+      <a class="btn gold" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Walima%20—%20Muhammad%20Rashid%20Wedding&dates=20270103T140000Z/20270103T180000Z">Add to Calendar</a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://maps.app.goo.gl/BbEWpqdGCXHcXJu4A">View Location</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== DUA ======== -->
+<section class="wrap reveal">
+  <div class="orn"><span>✦</span></div>
+  <p class="dua">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+  <p class="parent-line" style="margin-top:10px">"Allah aap dono ke liye barkat de, aur aap dono ko khair par jama rakhe."<br>Aap sab ki duaon aur mohabbat ke muntazir hain.</p>
+</section>
+
+<footer>
+  <div class="mono">R &amp; M</div>
+  <p>With love &amp; gratitude,<br><b>Family of Muhammad Rashid</b></p>
+  <p class="credit">Digital invitation — crafted with love</p>
+</footer>
+
+<a class="wa-float" id="rsvp" target="_blank" rel="noopener" href="https://wa.me/923001234567?text=Assalamualaikum!%20Main%20shadi%20mein%20shirkat%20ki%20tasdeeq%20karta%20hun.">✔ RSVP on WhatsApp</a>
+
+<script>
+/* variants: full (default) · mw = Mehndi+Walima · mehndi / baraat / walima = single event */
+const variant = new URLSearchParams(location.search).get('v') || 'full';
+const allowed = {full: ['mehndi', 'baraat', 'walima'], mw: ['mehndi', 'walima'],
+  mehndi: ['mehndi'], baraat: ['baraat'], walima: ['walima']}[variant] || ['mehndi', 'baraat', 'walima'];
+document.querySelectorAll('[data-event]').forEach(el => {
+  if (allowed.includes(el.dataset.event)) { el.style.display = ''; }
+  else { el.remove(); }
+});
+/* gate */
+function openGate(){
+  document.getElementById('gate').classList.add('open');
+  setTimeout(()=>document.getElementById('gate').remove(), 2200);
+}
+/* petals */
+(function(){
+  const chars = ['❀','✿','❁'];
+  for (let i = 0; i < 12; i++) {
+    const s = document.createElement('span');
+    s.className = 'petal';
+    s.textContent = chars[i % 3];
+    s.style.left = (Math.random() * 100) + 'vw';
+    s.style.fontSize = (10 + Math.random() * 12) + 'px';
+    s.style.animationDuration = (11 + Math.random() * 14) + 's';
+    s.style.animationDelay = (-Math.random() * 18) + 's';
+    document.body.appendChild(s);
+  }
+})();
+/* countdown — to Baraat if shown, else Walima; hidden for Mehndi-only */
+const cdTarget = allowed.includes('baraat') ? '2027-01-01T19:00:00+05:00'
+  : allowed.includes('walima') ? '2027-01-03T19:00:00+05:00' : null;
+if (!cdTarget) { const c = document.getElementById('count'); if (c) c.closest('.reveal').remove(); }
+const target = cdTarget ? new Date(cdTarget).getTime() : Date.now();
+function tick(){
+  let diff = Math.max(0, target - Date.now());
+  const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60, s = Math.floor(diff / 1e3) % 60;
+  const set = (id, v) => document.getElementById(id).textContent = String(v).padStart(2, '0');
+  set('cd-d', d); set('cd-h', h); set('cd-m', m); set('cd-s', s);
+}
+tick(); setInterval(tick, 1000);
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
