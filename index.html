@@ -203,8 +203,14 @@ footer p{color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.6}
 <a class="wa-float" id="rsvp" target="_blank" rel="noopener" href="https://wa.me/923001234567?text=Assalamualaikum!%20Main%20shadi%20mein%20shirkat%20ki%20tasdeeq%20karta%20hun.">✔ RSVP on WhatsApp</a>
 
 <script>
-/* variants: full (default) · mw = Mehndi+Walima · mehndi / baraat / walima = single event */
-const variant = new URLSearchParams(location.search).get('v') || 'full';
+/* variants: full (default) · mw = Mehndi+Walima · mehndi / baraat / walima = single event.
+   Read from ?v= first, else from the clean path (/mw, /baraat, ...) since rewrites hide the query. */
+let variant = new URLSearchParams(location.search).get('v');
+if (!variant) {
+  const p = location.pathname.replace(/\//g, '');
+  if (['mw', 'mehndi', 'baraat', 'walima'].includes(p)) variant = p;
+}
+variant = variant || 'full';
 const allowed = {full: ['mehndi', 'baraat', 'walima'], mw: ['mehndi', 'walima'],
   mehndi: ['mehndi'], baraat: ['baraat'], walima: ['walima']}[variant] || ['mehndi', 'baraat', 'walima'];
 document.querySelectorAll('[data-event]').forEach(el => {
