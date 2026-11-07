@@ -17,22 +17,25 @@ html{scroll-behavior:smooth}
 body{background:var(--ivory);color:var(--ink);font-family:'Jost',sans-serif;overflow-x:hidden}
 ::selection{background:var(--gold);color:#fff}
 
-/* ---------- opening doors ---------- */
-#gate{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 35%,#8A1E30 0%,var(--maroon-deep) 70%);cursor:pointer;transition:opacity .9s ease .55s}
-#gate .door{position:absolute;top:0;bottom:0;width:50.5%;background:
-  repeating-linear-gradient(90deg,rgba(0,0,0,.13) 0 3px,transparent 3px 46px),
-  linear-gradient(180deg,#7E1B2C,#5A0F1D);transition:transform 1.4s cubic-bezier(.7,0,.3,1);z-index:1}
-#gate .door.l{left:0;border-right:3px solid var(--gold)}
-#gate .door.r{right:0;border-left:3px solid var(--gold)}
-#gate.open .door.l{transform:translateX(-102%)}
-#gate.open .door.r{transform:translateX(102%)}
+/* ---------- opening curtains ---------- */
+#gate{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 35%,#8A1E30 0%,var(--maroon-deep) 70%);cursor:pointer;transition:opacity .9s ease .85s;overflow:hidden}
+#gate .curtain{position:absolute;top:0;bottom:0;width:52%;z-index:1;background:
+  repeating-linear-gradient(90deg,rgba(0,0,0,.36) 0 10px,rgba(255,205,140,.08) 22px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.36) 58px),
+  linear-gradient(180deg,#8A1E30,#5F101F 55%,#47090F);transition:transform 1.7s cubic-bezier(.7,0,.25,1)}
+#gate .curtain::after{content:"";position:absolute;left:0;right:0;bottom:0;height:84px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.38))}
+#gate .curtain.l{left:0;transform-origin:left center;border-right:4px solid var(--gold);box-shadow:inset -18px 0 28px rgba(0,0,0,.35)}
+#gate .curtain.r{right:0;transform-origin:right center;border-left:4px solid var(--gold);box-shadow:inset 18px 0 28px rgba(0,0,0,.35)}
+#gate.open .curtain.l{transform:translateX(-95%) scaleX(.36)}
+#gate.open .curtain.r{transform:translateX(95%) scaleX(.36)}
+#gate .valance{position:absolute;top:0;left:0;width:100%;height:104px;z-index:2;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35));transition:transform 1.2s ease,opacity 1s ease}
+#gate.open .valance{transform:translateY(-104%);opacity:.4}
 #gate.open{opacity:0;pointer-events:none}
-#gate .gate-inner{position:relative;z-index:2;text-align:center;color:var(--cream);padding:24px}
-#gate .arch{width:150px;margin:0 auto 10px;display:block}
+#gate .gate-inner{position:relative;z-index:3;text-align:center;color:var(--cream);padding:24px}
 #gate h2{font-family:'Great Vibes',cursive;font-weight:400;font-size:2.6rem;color:var(--gold-soft);line-height:1.15}
 #gate p{letter-spacing:.35em;font-size:.72rem;text-transform:uppercase;margin-top:14px;color:#EAD9B0}
-#gate .tap{margin-top:26px;display:inline-block;border:1px solid var(--gold);color:var(--gold-soft);padding:11px 30px;border-radius:999px;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.35)}50%{box-shadow:0 0 0 12px rgba(201,162,39,0)}}
+#gate .seal{width:158px;height:158px;margin-top:30px;cursor:pointer;border-radius:50%;animation:sealpulse 2.2s infinite;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45));transition:transform .3s}
+#gate .seal:hover{transform:scale(1.05)}
+@keyframes sealpulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.40)}50%{box-shadow:0 0 0 18px rgba(201,162,39,0)}}
 
 /* ---------- petals ---------- */
 .petal{position:fixed;top:-4vh;z-index:5;pointer-events:none;color:#D9A441;opacity:.55;animation:fall linear infinite}
@@ -94,17 +97,25 @@ footer p{color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.6}
 
 <!-- ======== OPENING GATE ======== -->
 <div id="gate" onclick="openGate()">
-  <div class="door l"></div><div class="door r"></div>
+  <div class="curtain l"></div><div class="curtain r"></div>
+  <svg class="valance" viewBox="0 0 400 92" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="vgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8A1E30"/><stop offset=".55" stop-color="#671222"/><stop offset="1" stop-color="#4A0A15"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 0 H400 V20 C366 76 300 76 267 24 C233 84 167 84 133 24 C100 76 34 76 0 22 Z" fill="url(#vgrad)"/>
+    <path d="M0 22 C34 76 100 76 133 24 C167 84 233 84 267 24 C300 76 366 76 400 20" fill="none" stroke="#C9A227" stroke-width="2.4"/>
+    <g fill="#E4C566">
+      <circle cx="34" cy="52" r="2.6"/><circle cx="66" cy="64" r="2.6"/><circle cx="100" cy="54" r="2.6"/>
+      <circle cx="167" cy="66" r="2.6"/><circle cx="200" cy="70" r="2.6"/><circle cx="233" cy="66" r="2.6"/>
+      <circle cx="300" cy="54" r="2.6"/><circle cx="333" cy="64" r="2.6"/><circle cx="366" cy="52" r="2.6"/>
+    </g>
+  </svg>
   <div class="gate-inner">
-    <svg class="arch" viewBox="0 0 200 240" fill="none" stroke="#E4C566" stroke-width="3">
-      <path d="M20 230 V110 C20 60 60 50 100 18 C140 50 180 60 180 110 V230"/>
-      <path d="M42 230 V118 C42 78 72 66 100 40 C128 66 158 78 158 118 V230" stroke-width="1.6" opacity=".7"/>
-      <circle cx="100" cy="128" r="16" stroke-width="1.6"/>
-      <path d="M100 112 v32 M84 128 h32" stroke-width="1.4" opacity=".8"/>
-    </svg>
     <p>The wedding of</p>
     <h2>Muhammad Rashid</h2>
-    <span class="tap">Tap to open</span>
+    <img class="seal" src="seal.png" alt="Open the invitation">
   </div>
 </div>
 
@@ -220,7 +231,7 @@ document.querySelectorAll('[data-event]').forEach(el => {
 /* gate */
 function openGate(){
   document.getElementById('gate').classList.add('open');
-  setTimeout(()=>document.getElementById('gate').remove(), 2200);
+  setTimeout(()=>document.getElementById('gate').remove(), 2600);
 }
 /* petals */
 (function(){
