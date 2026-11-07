@@ -6,7 +6,7 @@
 <title>Muhammad Rashid — Wedding Invitation (Illustrated Design Preview)</title>
 <meta name="description" content="Wedding invitation of Muhammad Rashid — Baraat 1 January 2027, Walima 3 January 2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --ivory:#FBF5E9; --cream:#F5EBD7; --maroon:#6E1423; --maroon-deep:#47090F;
@@ -84,6 +84,7 @@ h1.names .amp{display:flex;align-items:center;justify-content:center;width:44px;
 .scratch-under .sd-ev{font-family:'Great Vibes',cursive;font-size:1.5rem;color:var(--gold)}
 #scratchCv{position:absolute;inset:0;touch-action:none;cursor:pointer;transition:opacity .7s ease}
 
+.urdu-hint{font-family:'Noto Nastaliq Urdu',serif;font-size:1.05rem;color:var(--maroon);line-height:2.3;margin-top:8px}
 /* countdown */
 .count{display:flex;gap:10px;justify-content:center;margin-top:24px}
 .count .cell{background:#FFFDF6;border:1.5px solid var(--gold-soft);border-radius:14px;min-width:70px;padding:13px 4px 10px;box-shadow:0 10px 22px rgba(110,20,35,.10)}
@@ -191,7 +192,7 @@ footer .mono{font-size:1.9rem}
       </div>
       <canvas id="scratchCv"></canvas>
     </div>
-    <p class="parent-line" style="margin-top:10px">Upar wali sunehri teh ko ungli se ragdein</p>
+    <p class="urdu-hint">اوپر والی سنہری تہہ کو انگلی سے رگڑ کر تاریخ دیکھیں</p>
   </div>
 
   <div id="countWrap">
@@ -342,8 +343,10 @@ document.querySelectorAll('.tile').forEach(el => io.observe(el));
     for (let i = -h; i < w; i += 14) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i + h, h); x.stroke(); }
     x.fillStyle = 'rgba(71,9,15,.75)';
     x.font = '600 15px Jost, sans-serif'; x.textAlign = 'center';
-    x.fillText('✦  S C R A T C H   H E R E  ✦', w / 2, h / 2 - 4);
-    x.font = '30px serif'; x.fillText('🪙', w / 2, h / 2 + 38);
+    x.fillText('✦  S C R A T C H   H E R E  ✦', w / 2, h / 2 - 22);
+    x.font = '19px "Noto Nastaliq Urdu", serif';
+    x.fillText('یہاں انگلی سے رگڑیں', w / 2, h / 2 + 16);
+    x.font = '26px serif'; x.fillText('🪙', w / 2, h / 2 + 52);
   }
   paint();
   const ctx = cv.getContext('2d');
